@@ -17,7 +17,7 @@ public class Gallery extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
 
         final String[] names = {"Alpha", "Beta", "Gamma", "Delta"
-                            , "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa"};
+                            , "Epsilon", "Zeta", "Eta", "Theta"};
 
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
