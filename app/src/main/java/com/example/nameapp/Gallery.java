@@ -16,8 +16,8 @@ public class Gallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-        final String[] names = {"Hund 1", "Hund 2", "Hund 3", "Hund 4"
-                            , "Hund 5", "Hund 6", "Hund 7", "Hund 8", "Hund 9"};
+        final String[] names = {"Alpha", "Beta", "Gamma", "Delta"
+                            , "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa"};
 
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
