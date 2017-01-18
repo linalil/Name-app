@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class PersonList {
 
-    ArrayList<Person> liste;
+    private static ArrayList<Person> liste;
 
-    public PersonList(){
+    public static void initialize(){
 
         liste = new ArrayList<Person>();
 
@@ -19,13 +19,17 @@ public class PersonList {
 
         liste.add(hund1);
         liste.add(hund2);
-
     }
 
-
-    ArrayList<Person> getListe(){
+    public static ArrayList<Person> getListe(){
         return liste;
     }
+
+    //is initialized
+
+    //add person
+
+    //Variabel for å sjekke om initialisert
 
 
 

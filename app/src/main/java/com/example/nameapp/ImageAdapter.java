@@ -20,6 +20,7 @@ public class ImageAdapter extends BaseAdapter {
 
     public ImageAdapter(Context c) {
         mContext = c;
+
     }
 
     public Object getItem(int position) {
