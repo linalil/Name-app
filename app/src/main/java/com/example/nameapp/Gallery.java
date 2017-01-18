@@ -32,7 +32,6 @@ public class Gallery extends AppCompatActivity {
 
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
                     return;
-
                 }
 
                 //Klikk

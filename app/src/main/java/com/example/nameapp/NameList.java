@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
+//Klassen som listar ut namn
 public class NameList extends AppCompatActivity {
 
     @Override
@@ -18,29 +20,42 @@ public class NameList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_list);
 
+        //Brukar klassen ListView for å lage ei liste med namn nedover
+        //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
         final ListView listview = (ListView) findViewById(R.id.listview);
 
+        //Strengane som listast ut
         String[] values = {"Alpha", "Beta", "Gamma", "Delta"
                 , "Epsilon", "Zeta", "Eta", "Theta"};
 
+        //Lagar ein arraylist og fyller inn namna
         final ArrayList<String> list = new ArrayList<String>();
 
         for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
         }
 
+        //Brukar ein eigendefinert adapter for å fikse layouten på lista
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
+        //Set ein lyttar som fortel kva som skal skje når vi trykker på eit element i lista.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
+
+
+                //Foreløpig skjer det ein animasjon som fjernar listeelement,
+                //men ein skal her fikse slik at det poppar opp eit bilete.
                 final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
+
+
+
+                /*view.animate().setDuration(2000).alpha(0)
                         .withEndAction(new Runnable() {
                             @Override
                             public void run() {
@@ -48,7 +63,8 @@ public class NameList extends AppCompatActivity {
                                 adapter.notifyDataSetChanged();
                                 view.setAlpha(1);
                             }
-                        });
+                        });*/
+
             }
 
         });
