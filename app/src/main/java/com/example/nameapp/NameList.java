@@ -8,8 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static com.example.nameapp.PersonList.getListe;
+import static com.example.nameapp.PersonList.initialize;
+import static com.example.nameapp.PersonList.listInitialized;
 
 
 //Klassen som listar ut namn
@@ -24,15 +29,18 @@ public class NameList extends AppCompatActivity {
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
         final ListView listview = (ListView) findViewById(R.id.listview);
 
-        //Strengane som listast ut
-        String[] values = {"Alpha", "Beta", "Gamma", "Delta"
-                , "Epsilon", "Zeta", "Eta", "Theta"};
+
+        if(!listInitialized()){
+            initialize();
+        }
+        final ArrayList<Person> liste = getListe();
+
 
         //Lagar ein arraylist og fyller inn namna
         final ArrayList<String> list = new ArrayList<String>();
 
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
+        for (int i = 0; i < liste.size(); ++i) {
+            list.add(liste.get(i).getName());
         }
 
         //Brukar ein eigendefinert adapter for å fikse layouten på lista
@@ -51,19 +59,9 @@ public class NameList extends AppCompatActivity {
 
                 //Foreløpig skjer det ein animasjon som fjernar listeelement,
                 //men ein skal her fikse slik at det poppar opp eit bilete.
-                final String item = (String) parent.getItemAtPosition(position);
+                final Person person = (Person) parent.getItemAtPosition(position);
 
-
-
-                /*view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                list.remove(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });*/
+                //TODO: Make dialog....
 
             }
 

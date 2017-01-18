@@ -1,41 +1,71 @@
 package com.example.nameapp;
 
 import android.content.Context;
+import android.media.Image;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by theaoen on 14.01.2017.
  */
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends ArrayAdapter<Person> {
 
     private Context mContext;
 
-    public ImageAdapter(Context c) {
-        mContext = c;
-
+    public ImageAdapter(Context context, int resource, ArrayList<Person> objects) {
+        super(context, resource, objects);
+        mContext = context;
     }
 
-    public Object getItem(int position) {
-        return null;
+    private static class ViewHolder {
+        private ImageView itemView;
     }
 
-    public long getItemId(int position) {
-        return 0;
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        ViewHolder viewHolder;
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(this.getContext())
+                    .inflate(R.layout.activity_gallery_imageview, parent, false);
+
+            viewHolder = new ViewHolder();
+            viewHolder.itemView = (ImageView) convertView.findViewById(R.id.imageView);
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        Person item = getItem(position);
+        if (item != null) {
+            // My layout has only one TextView
+            // do whatever you want with your string and long
+            viewHolder.itemView.setImageResource(item.pictureRef);
+
+            return convertView;
+        }
+
+        return convertView;
     }
 
-    public int getCount() {
-        return mThumbIds.length;
-    }
 
-    // create a new ImageView for each item referenced by the Adapter
+/*
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ImageView imageView;
@@ -50,18 +80,6 @@ public class ImageAdapter extends BaseAdapter {
         }
 
 
-        /*
-        PersonList plist = new PersonList();
-        ArrayList<Person> liste = plist.getListe();
-
-        Integer[] mThumbIds = {};
-
-        for (int i = 0; i < liste.size(); i++){
-
-            mThumbIds[i] = liste.get(i).pictureRef;
-
-        }*/
-
         imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
@@ -75,5 +93,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.sample_6, R.drawable.sample_7,
             R.drawable.sample_0, R.drawable.sample_1
     };
+*/
+
 
 }

@@ -9,6 +9,13 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import static com.example.nameapp.PersonList.getListe;
+import static com.example.nameapp.PersonList.listInitialized;
+import static com.example.nameapp.PersonList.initialize;
+import static com.example.nameapp.PersonList.listInitialized;
+
 public class Gallery extends AppCompatActivity {
 
     @Override
@@ -16,14 +23,15 @@ public class Gallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-        final String[] names = {"Alpha", "Beta", "Gamma", "Delta"
-                            , "Epsilon", "Zeta", "Eta", "Theta"};
+        if(!listInitialized()){
+            initialize();
+        }
+        final ArrayList<Person> p = getListe();
 
+        GridView grid = (GridView) findViewById(R.id.gridview);
+        grid.setAdapter(new ImageAdapter(this, R.layout.activity_gallery_imageview, p));
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             long mLastClickTime = 0;
 
@@ -38,7 +46,7 @@ public class Gallery extends AppCompatActivity {
                 mLastClickTime = SystemClock.elapsedRealtime();
 
 
-                Toast.makeText(Gallery.this, "" + names[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(Gallery.this, "" +  p.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
 

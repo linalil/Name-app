@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class PersonList {
 
     private static ArrayList<Person> liste;
+    private static boolean listInitialized = false;
 
     public static void initialize(){
 
@@ -19,18 +20,34 @@ public class PersonList {
 
         liste.add(hund1);
         liste.add(hund2);
+
+        listInitialized = true;
     }
 
     public static ArrayList<Person> getListe(){
         return liste;
     }
 
+
     //is initialized
+    public static boolean listInitialized(){
+        return listInitialized;
+    }
 
     //add person
+    public static void addPerson(String name, Integer pictureRef){
 
-    //Variabel for å sjekke om initialisert
+        if(!name.isEmpty() || !pictureRef.equals(null)) {
+            liste.add(new Person(name, pictureRef));
+        }
 
+        else{
+
+            //TODO: Lag feilmelding
+            //Skriv ut kva som skjedde feil
+        }
+
+    }
 
 
 }
