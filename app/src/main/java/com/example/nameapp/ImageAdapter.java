@@ -1,8 +1,11 @@
 package com.example.nameapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,11 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,11 +33,13 @@ public class ImageAdapter extends ArrayAdapter<Person> {
 
     private Context mContext;
 
+    //Konstruktør
     public ImageAdapter(Context context, int resource, ArrayList<Person> objects) {
         super(context, resource, objects);
         mContext = context;
     }
 
+    //ImageView som eit bilete skal plasserast i.
     private static class ViewHolder {
         private ImageView itemView;
     }
@@ -54,15 +63,18 @@ public class ImageAdapter extends ArrayAdapter<Person> {
 
         Person item = getItem(position);
         if (item != null) {
-            // My layout has only one TextView
-            // do whatever you want with your string and long
-            viewHolder.itemView.setImageResource(item.pictureRef);
+            //Set inn biletet i itemView.
+            //viewHolder.itemView.setImageResource(item.pictureRef);
+            viewHolder.itemView.setImageURI(item.uri);
 
             return convertView;
         }
 
         return convertView;
     }
+
+
+
 
 
 /*

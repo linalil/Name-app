@@ -31,7 +31,7 @@ public class NameList extends AppCompatActivity {
 
 
         if(!listInitialized()){
-            initialize();
+            initialize(this);
         }
         final ArrayList<Person> liste = getListe();
 
@@ -56,9 +56,6 @@ public class NameList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
 
-
-                //Foreløpig skjer det ein animasjon som fjernar listeelement,
-                //men ein skal her fikse slik at det poppar opp eit bilete.
                 final Person person = (Person) parent.getItemAtPosition(position);
 
                 //TODO: Make dialog....
