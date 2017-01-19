@@ -6,4 +6,5 @@
     <string name="edit_message">Guess the name!</string>
     <string name="button_send">Send</string>
     <string name="info">Guess who!</string>
+    <string name="addNewPerson">+ Add New Person</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.nameapp;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -104,7 +105,12 @@ public class NameList extends AppCompatActivity {
     }
 
 
+    public void addNewPerson(View view){
+        //Intent intent;
+        //intent = new Intent(this, AddNewPerson.class);
+        //startActivity(intent);
 
+    }
 
 
 }

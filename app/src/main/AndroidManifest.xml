@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".NameList" />
         <activity android:name=".Gallery" />
-        <activity android:name=".LearningMode"></activity>
+        <activity android:name=".LearningMode" />
     </application>
 
 </manifest>
