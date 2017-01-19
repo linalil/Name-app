@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import static com.example.nameapp.PersonList.addPerson;
 
@@ -82,7 +83,9 @@ public class addNewPersonActivity extends AppCompatActivity {
         String name = editText.getText().toString();
 
         addPerson(name, pictureUri);
+        Toast.makeText(addNewPersonActivity.this, "" +  name + " was successfully added", Toast.LENGTH_SHORT).show();
 
+        finish();
     }
     public void cancelAddPersonToApp(View view) {
 

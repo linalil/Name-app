@@ -28,6 +28,10 @@ import static com.example.nameapp.PersonList.listInitialized;
 //Klassen som listar ut namn
 public class NameList extends AppCompatActivity {
 
+
+    private StableArrayAdapter adapter;
+    private ArrayList<Person> liste;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,7 @@ public class NameList extends AppCompatActivity {
         if(!listInitialized()){
             initialize(this);
         }
-        final ArrayList<Person> liste = getListe();
+        liste = getListe();
 
 
         //Lagar ein arraylist og fyller inn namna
@@ -52,7 +56,7 @@ public class NameList extends AppCompatActivity {
         }
 
         //Brukar ein eigendefinert adapter for å fikse layouten på lista
-        final StableArrayAdapter adapter = new StableArrayAdapter(this,
+        adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
@@ -78,6 +82,22 @@ public class NameList extends AppCompatActivity {
         });
 
     }
+
+/*
+    @Override
+    public void onResume() {
+        super.onResume();
+        liste.clear();
+        liste = getListe();
+        final ArrayList<String> list = new ArrayList<String>();
+
+        for (int i = 0; i < liste.size(); ++i) {
+            list.add(liste.get(i).getName());
+        }
+
+        adapter.notifyDataSetChanged();
+
+    }*/
 
     //Metode som lagar pop-up vindauge med bilete gitt som Uri.
     public void showImage(Uri imageUri) {
