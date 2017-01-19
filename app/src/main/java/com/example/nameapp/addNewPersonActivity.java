@@ -84,6 +84,11 @@ public class addNewPersonActivity extends AppCompatActivity {
         addPerson(name, pictureUri);
 
     }
+    public void cancelAddPersonToApp(View view) {
+
+        finish();
+
+    }
 
 
 }
