@@ -3,4 +3,6 @@
     <string name="name_list">Name list</string>
     <string name="gallery">Gallery</string>
     <string name="learningmode">Learning mode</string>
+    <string name="edit_message">Guess the name!</string>
+    <string name="button_send">Send</string>
 </resources>
