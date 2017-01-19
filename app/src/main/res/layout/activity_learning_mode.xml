@@ -8,13 +8,52 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
         tools:context="com.example.nameapp.LearningMode">
 
+    <!--
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/info"
+            android:padding="5dp"
+            android:textSize="23sp"
+            android:text="@string/info"/>
+     -->
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageView"
-            android:background="@color/colorPrimary"/>
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:background="@color/colorPrimaryDark"
+            android:paddingBottom="20dp"
+            android:id="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/attempts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
 
         <EditText
             android:id="@+id/edit_message"
@@ -28,6 +67,11 @@
             android:layout_height="wrap_content"
             android:text="@string/button_send"
             android:onClick="sendAnswer" />
+    </LinearLayout>
+
+
+
+
 
 </LinearLayout>
 

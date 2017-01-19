@@ -5,4 +5,5 @@
     <string name="learningmode">Learning mode</string>
     <string name="edit_message">Guess the name!</string>
     <string name="button_send">Send</string>
+    <string name="info">Guess who!</string>
 </resources>

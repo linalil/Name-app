@@ -64,7 +64,6 @@ public class ImageAdapter extends ArrayAdapter<Person> {
         Person item = getItem(position);
         if (item != null) {
             //Set inn biletet i itemView.
-            //viewHolder.itemView.setImageResource(item.pictureRef);
             viewHolder.itemView.setImageURI(item.uri);
 
             return convertView;

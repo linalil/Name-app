@@ -57,15 +57,13 @@ public class GameCenter {
     }
 
     //Sjekkar om svaret var riktig
-    public boolean checkAnswer(String name){
+    public void checkAnswer(String name){
         if(correctName.toLowerCase().equals(name.toLowerCase())){
             attempts++;
             score++;
-            return true;
         }
         else{
             attempts++;
-            return false;
         }
     }
 
