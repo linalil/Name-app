@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -114,6 +115,10 @@ public class NameList extends AppCompatActivity {
 
         ImageView imageView = new ImageView(this);
         imageView.setImageURI(imageUri);
+
+        Toast.makeText(NameList.this, "" +  imageUri, Toast.LENGTH_LONG).show();
+
+
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
