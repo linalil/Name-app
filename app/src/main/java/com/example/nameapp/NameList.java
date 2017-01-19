@@ -1,6 +1,5 @@
 package com.example.nameapp;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -18,8 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -106,9 +102,9 @@ public class NameList extends AppCompatActivity {
 
 
     public void addNewPerson(View view){
-        //Intent intent;
-        //intent = new Intent(this, AddNewPerson.class);
-        //startActivity(intent);
+        Intent intent;
+        intent = new Intent(this, addNewPersonActivity.class);
+        startActivity(intent);
 
     }
 

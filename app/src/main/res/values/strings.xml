@@ -7,4 +7,9 @@
     <string name="button_send">Send</string>
     <string name="info">Guess who!</string>
     <string name="addNewPerson">+ Add New Person</string>
+    <string name="addNameText">Type your name: </string>
+    <string name="addPictureText">Add picture: </string>
+    <string name="edit_name">Your name</string>
+    <string name="browse_gallery">Browse gallery</string>
+    <string name="add_Person_to_App">Add person</string>
 </resources>
