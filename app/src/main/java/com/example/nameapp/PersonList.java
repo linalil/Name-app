@@ -57,7 +57,7 @@ public class PersonList {
     //add person
     public static void addPerson(String name, Uri uri){
 
-        if(!name.isEmpty() || !uri.equals(null)) {
+        if(!name.isEmpty()) {
             liste.add(new Person(name, uri));
         }
 

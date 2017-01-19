@@ -53,10 +53,11 @@
             />
 
         <Button
+            android:id="@+id/browse_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/browse_gallery"
-            android:onClick="browsePhotoGallery" />
+            />
 
 
 
