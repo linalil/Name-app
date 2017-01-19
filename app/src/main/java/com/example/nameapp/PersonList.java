@@ -36,12 +36,12 @@ public class PersonList {
     }
 
     //Metode som hentar URI til gitte sample-bilete i drawable.
-    public static final Uri getUriToDrawable(Context context, int drawableId) {
-        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+    public static Uri getUriToDrawable(Context context, int drawableId) {
+        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
                 "://" + context.getResources().getResourcePackageName(drawableId)
                 + '/' + context.getResources().getResourceTypeName(drawableId)
                 + '/' + context.getResources().getResourceEntryName(drawableId) );
-        return imageUri;
+
     }
 
 
@@ -50,7 +50,6 @@ public class PersonList {
     }
 
 
-    //is initialized
     public static boolean listInitialized(){
         return listInitialized;
     }
@@ -68,6 +67,20 @@ public class PersonList {
             //Skriv ut kva som skjedde feil
         }
 
+    }
+
+    public static Uri findUriFromName(String name){
+
+        for(int i = 0; i < liste.size(); i++){
+
+            Person p = liste.get(i);
+
+            if(p.name.equals(name)){
+
+                return p.uri;
+            }
+        }
+        return null;
     }
 
 

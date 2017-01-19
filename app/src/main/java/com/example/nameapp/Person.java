@@ -12,15 +12,16 @@ public class Person {
 
     String name;
 
-    Integer pictureRef;
+    //Integer pictureRef;
 
     Uri uri;
 
 
+    /*
     public Person(String name, Integer pictureRef){
         this.name = name;
         this.pictureRef = pictureRef;
-    }
+    }*/
 
     public Person(String name, Uri uri){
         this.name = name;
@@ -31,17 +32,17 @@ public class Person {
         this.name = name;
     }
 
-    void setPictureRef(Integer pictureRef){
+   /* void setPictureRef(Integer pictureRef){
         this.pictureRef = pictureRef;
-    }
+    }*/
 
     String getName(){
         return name;
     }
 
-    Integer returnPictureRef(){
+    /*Integer returnPictureRef(){
         return pictureRef;
-    }
+    }*/
 
     void setUri(Uri uri){
         this.uri = uri;
