@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import static com.example.nameapp.PersonList.addPerson;
@@ -49,6 +50,9 @@ public class addNewPersonActivity extends AppCompatActivity {
 
                 Toast.makeText(addNewPersonActivity.this, "" +  pictureUri, Toast.LENGTH_LONG).show();
 
+                ImageView imageView = (ImageView) findViewById(R.id.addedPictureView);
+                
+                imageView.setImageURI(pictureUri);
             }
 
 
@@ -65,6 +69,17 @@ public class addNewPersonActivity extends AppCompatActivity {
 
         finish();
     }
+/*
+    public void showChosenPicture(int requestCode, int resultCode, Intent data){
+        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
+            pictureUri = selectedImageUri;
+            ImageView imageView = (ImageView) findViewById(R.id.addedPictureView);
+            imageView.setImageURI(null);
+            imageView.setImageURI(pictureUri);
+        }
+    }
+*/
     public void cancelAddPersonToApp(View view) {
 
         finish();

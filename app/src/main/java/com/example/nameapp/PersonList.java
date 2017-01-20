@@ -24,13 +24,13 @@ public class PersonList {
 
         liste = new ArrayList<Person>();
 
-        Person hund1 = new Person("Alpha", getUriToDrawable(context, R.drawable.sample_0));
-        Person hund2 = new Person("Beta", getUriToDrawable(context, R.drawable.sample_1));
-        Person hund3 = new Person("Delta", getUriToDrawable(context, R.drawable.sample_2));
+        Person thea = new Person("Thea", getUriToDrawable(context, R.drawable.thea_bw));
+        Person marita = new Person("Marita", getUriToDrawable(context, R.drawable.marita_bw));
+        Person lina = new Person("Lina", getUriToDrawable(context, R.drawable.lina_bw));
 
-        liste.add(hund1);
-        liste.add(hund2);
-        liste.add(hund3);
+        liste.add(thea);
+        liste.add(marita);
+        liste.add(lina);
 
         listInitialized = true;
     }
