@@ -31,6 +31,7 @@ public class NameList extends AppCompatActivity {
 
 
     private StableArrayAdapter adapter;
+
     private ArrayList<Person> liste;
 
     @Override
