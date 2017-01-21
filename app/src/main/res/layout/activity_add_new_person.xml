@@ -57,7 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/browse_gallery"
-            android:onClick="browsePhotoGallery" />
+            android:onClick="browse_gallery"
+            />
 
 
 
@@ -69,7 +70,7 @@
         android:orientation="horizontal">
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
