@@ -64,4 +64,9 @@ public class LearningMode extends AppCompatActivity {
         attempts.setText(numAttempts);
 
     }
+    public void goBack(View view) {
+
+        finish();
+
+    }
 }

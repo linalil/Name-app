@@ -134,6 +134,11 @@ public class NameList extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void goBack(View view) {
+
+        finish();
+
+    }
 
 
 }
