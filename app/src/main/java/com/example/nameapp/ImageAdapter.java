@@ -13,7 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
@@ -64,7 +66,34 @@ public class ImageAdapter extends ArrayAdapter<Person> {
         Person item = getItem(position);
         if (item != null) {
             //Set inn biletet i itemView.
-            viewHolder.itemView.setImageURI(item.uri);
+
+
+            InputStream input;
+            Bitmap bmp;
+            try {
+                input = mContext.getContentResolver().openInputStream(item.uri);
+                bmp = BitmapFactory.decodeStream(input);
+                viewHolder.itemView.setImageBitmap(bmp);
+            } catch (FileNotFoundException e1) {
+
+                Toast.makeText(mContext, "Could not find image", Toast.LENGTH_LONG).show();
+
+            }
+            catch(Exception e2){
+
+                Toast.makeText(mContext, "Something went wrong", Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+            //viewHolder.itemView.setImageURI(item.uri);
+
+
+
+
+
+
 
             return convertView;
         }
