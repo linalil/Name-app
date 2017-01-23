@@ -15,12 +15,15 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Collections;
@@ -104,8 +107,6 @@ public class addNewPersonActivity extends AppCompatActivity {
             final int takeFlags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION);
             this.getContentResolver().takePersistableUriPermission(decodedUri, takeFlags);
             */
-
-
 
             Toast.makeText(addNewPersonActivity.this, "" + decodedString, Toast.LENGTH_LONG).show();
 
