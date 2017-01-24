@@ -8,8 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +20,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +39,8 @@ public class NameList extends AppCompatActivity {
 
     private ArrayList<Person> liste;
 
+    private ListView listview;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class NameList extends AppCompatActivity {
 
         //Brukar klassen ListView for å lage ei liste med namn nedover
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
-        final ListView listview = (ListView) findViewById(R.id.listview);
+        listview = (ListView) findViewById(R.id.listview);
 
 
 
@@ -68,7 +67,7 @@ public class NameList extends AppCompatActivity {
         }
 
         //Brukar ein eigendefinert adapter for å fikse layouten på lista
-        adapter = new StableArrayAdapter(this,
+       adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
@@ -85,8 +84,6 @@ public class NameList extends AppCompatActivity {
 
                 //Finn Uri til biletet, ved å bruke statisk metode frå PersonList-klassen + namnet.
                 Uri imgUri = findUriFromName(person);
-
-                System.out.println("Linken" + imgUri.toString());
 
                 //Lagar dialog v.h.a metode og Uri.
                 try {
@@ -105,7 +102,7 @@ public class NameList extends AppCompatActivity {
 /*
     @Override
     public void onResume() {
-        super.onResume();
+
         liste.clear();
         liste = getListe();
         final ArrayList<String> list = new ArrayList<String>();
@@ -116,7 +113,9 @@ public class NameList extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
 
-    }*/
+        super.onResume();
+    }
+    */
 
     //Metode som lagar pop-up vindauge med bilete gitt som Uri.
     public void showImage(Uri imageUri) throws IOException {

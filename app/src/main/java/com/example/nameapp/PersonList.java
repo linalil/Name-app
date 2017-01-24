@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.widget.Toast;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -62,14 +63,14 @@ public class PersonList {
     //add person
     public static void addPerson(String name, Uri uri){
 
-        if(!name.isEmpty()) {
+        if(!name.isEmpty() && !uri.toString().equals(null)) {
             liste.add(new Person(name, uri));
         }
 
         else{
 
-            //TODO: Lag feilmelding
-            //Skriv ut kva som skjedde feil
+            //Lag feilmelding
+
         }
 
     }

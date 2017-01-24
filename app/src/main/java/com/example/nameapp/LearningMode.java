@@ -91,6 +91,8 @@ public class LearningMode extends AppCompatActivity {
     }
     public void goBack(View view) {
 
+        Toast.makeText(LearningMode.this, "Scored " + gameCenter.score + " of " + gameCenter.attempts , Toast.LENGTH_SHORT).show();
+
         finish();
 
     }
