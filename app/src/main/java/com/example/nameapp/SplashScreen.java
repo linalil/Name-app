@@ -15,6 +15,7 @@ public class SplashScreen extends AppCompatActivity {
 
         /*Pseudokode, google om en må kode her for å få splashscreen til å "holde".
 
+        public static final String PREFS_NAME = "MyPrefsFile";
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
         if(settings.contains("owner"){
