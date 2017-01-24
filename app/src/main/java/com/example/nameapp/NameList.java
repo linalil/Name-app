@@ -99,23 +99,30 @@ public class NameList extends AppCompatActivity {
 
     }
 
-/*
+
     @Override
     public void onResume() {
 
-        liste.clear();
+        if(!listInitialized()){
+            initialize(this);
+        }
         liste = getListe();
+
         final ArrayList<String> list = new ArrayList<String>();
+
+        listview = (ListView) findViewById(R.id.listview);
 
         for (int i = 0; i < liste.size(); ++i) {
             list.add(liste.get(i).getName());
         }
 
-        adapter.notifyDataSetChanged();
+        adapter = new StableArrayAdapter(this,
+                android.R.layout.simple_list_item_1, list);
+        listview.setAdapter(adapter);
 
         super.onResume();
     }
-    */
+
 
     //Metode som lagar pop-up vindauge med bilete gitt som Uri.
     public void showImage(Uri imageUri) throws IOException {
