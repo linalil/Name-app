@@ -3,9 +3,13 @@ package com.example.nameapp;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +22,10 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import static com.example.nameapp.PersonList.findUriFromName;
@@ -43,6 +51,7 @@ public class NameList extends AppCompatActivity {
         //Brukar klassen ListView for å lage ei liste med namn nedover
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
         final ListView listview = (ListView) findViewById(R.id.listview);
+
 
 
         if(!listInitialized()){
@@ -77,8 +86,15 @@ public class NameList extends AppCompatActivity {
                 //Finn Uri til biletet, ved å bruke statisk metode frå PersonList-klassen + namnet.
                 Uri imgUri = findUriFromName(person);
 
+                System.out.println("Linken" + imgUri.toString());
+
                 //Lagar dialog v.h.a metode og Uri.
-                showImage(imgUri);
+                try {
+                    showImage(imgUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
 
             }
 
@@ -103,7 +119,7 @@ public class NameList extends AppCompatActivity {
     }*/
 
     //Metode som lagar pop-up vindauge med bilete gitt som Uri.
-    public void showImage(Uri imageUri) {
+    public void showImage(Uri imageUri) throws IOException {
         Dialog builder = new Dialog(this);
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
         builder.getWindow().setBackgroundDrawable(
@@ -116,7 +132,37 @@ public class NameList extends AppCompatActivity {
         });
 
         ImageView imageView = new ImageView(this);
-        imageView.setImageURI(imageUri);
+
+
+        InputStream input;
+        Bitmap bmp;
+        try {
+
+            input = this.getContentResolver().openInputStream(imageUri);
+            bmp = BitmapFactory.decodeStream(input);
+            imageView.setImageBitmap(bmp);
+        } catch (FileNotFoundException e1) {
+
+            Toast.makeText(this, "Could not find image", Toast.LENGTH_LONG).show();
+
+        }
+        catch(Exception e2){
+
+            String e = e2.getLocalizedMessage();
+            String e3 = e2.getMessage();
+            String to = e2.toString();
+
+            System.out.println("GetLocalizedMessage returnerar: " + e);
+            System.out.println("GetMessage returnerar: " + e3);
+            System.out.println("toString returnerar: " + to);
+
+
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+
+        }
+
+
+        //imageView.setImageURI(imageUri);
 
         Toast.makeText(NameList.this, "" +  imageUri, Toast.LENGTH_LONG).show();
 

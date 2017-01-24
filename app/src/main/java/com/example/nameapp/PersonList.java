@@ -3,8 +3,13 @@ package com.example.nameapp;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.ParcelFileDescriptor;
 
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -82,7 +87,6 @@ public class PersonList {
         }
         return null;
     }
-
 
 
 }
