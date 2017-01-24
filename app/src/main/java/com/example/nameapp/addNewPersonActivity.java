@@ -49,11 +49,11 @@ public class addNewPersonActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
 
-            //Må decode Uri til vanleg format utan % og liknande.
+            /*//Må decode Uri til vanleg format utan % og liknande.
             String decodedString = uri.decode(uri.toString());
             Uri decodedUri = Uri.parse(decodedString);
 
-            pictureUri = decodedUri;
+            pictureUri = decodedUri;*/
 
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
@@ -96,7 +96,7 @@ public class addNewPersonActivity extends AppCompatActivity {
 
     }
 
-    public String getRealPathFromURI(Context context, Uri contentUri) {
+    /*public String getRealPathFromURI(Context context, Uri contentUri) {
         Cursor cursor = null;
         try {
 
@@ -128,7 +128,7 @@ public class addNewPersonActivity extends AppCompatActivity {
             }
         }
 
-    }
+    }*/
 
     public void addPersonToApp(View view){
 

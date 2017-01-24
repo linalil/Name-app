@@ -47,14 +47,14 @@ public class PersonList {
         listInitialized = true;
     }
 
-    //Metode som hentar URI til gitte sample-bilete i drawable.
+    /*//Metode som hentar URI til gitte sample-bilete i drawable.
     public static Uri getUriToDrawable(Context context, int drawableId) {
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
                 "://" + context.getResources().getResourcePackageName(drawableId)
                 + '/' + context.getResources().getResourceTypeName(drawableId)
                 + '/' + context.getResources().getResourceEntryName(drawableId) );
 
-    }
+    }*/
 
     public static ArrayList<Person> getListe(){
         return liste;
@@ -64,7 +64,7 @@ public class PersonList {
         return listInitialized;
     }
 
-    //add person med Uri
+  /*  //add person med Uri
     public static void addPerson(String name, Uri uri){
 
         if(!name.isEmpty() && !uri.toString().equals(null)) {
@@ -77,7 +77,7 @@ public class PersonList {
 
         }
 
-    }
+    }*/
 
     //add person med bitmap
     public static void addPerson(String name, Bitmap bmp){
@@ -101,7 +101,7 @@ public class PersonList {
 
             Person p = liste.get(i);
 
-            if(p.name.equals(name)){
+            if(p.name.equals(name) && p.bmp != null ){
 
                 return p.uri;
             }
