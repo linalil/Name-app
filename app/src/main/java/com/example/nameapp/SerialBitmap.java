@@ -18,7 +18,7 @@ public class SerialBitmap implements Serializable {
     // TODO: Finish this constructor
     SerialBitmap(Bitmap bitmap) {
         // Take your existing call to BitmapFactory and put it here
-       // bitmap = BitmapFactory.decodeSomething(<some params>);
+       this.bitmap = bitmap;
     }
 
     // Converts the Bitmap into a byte array for serialization
@@ -38,4 +38,14 @@ public class SerialBitmap implements Serializable {
         byte bitmapBytes[] = byteStream.toByteArray();
         bitmap = BitmapFactory.decodeByteArray(bitmapBytes, 0, bitmapBytes.length);
     }
+
+    /*// Deserializes a byte array representing the Bitmap and decodes it
+    public Bitmap getBitmap(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        int b;
+        while((b = in.read()) != -1)
+            byteStream.write(b);
+        byte bitmapBytes[] = byteStream.toByteArray();
+        return BitmapFactory.decodeByteArray(bitmapBytes, 0, bitmapBytes.length);
+    }*/
 }

@@ -55,7 +55,6 @@ public class addNewPersonActivity extends AppCompatActivity {
             Uri decodedUri = Uri.parse(decodedString);
 
             pictureUri = decodedUri;*/
-
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                 bmp = bitmap;

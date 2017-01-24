@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nameapp">
 
+    <!-- TODO: Gjer om sånn at den nye aktiviteten er LAUNCHER, ikkje main menu -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,14 +19,14 @@
         <activity android:name=".NameList" />
         <activity android:name=".Gallery" />
         <activity android:name=".LearningMode" />
-        <activity android:name=".addNewPersonActivity"></activity>
+        <activity android:name=".addNewPersonActivity" />
 
-        <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+        <activity android:name=".addOwner" />
+        <activity android:name=".SplashScreen"></activity>
     </application>
-
-
 
 </manifest>
