@@ -5,9 +5,12 @@
     android:layout_height="match_parent">
 
 
+    <!--TODO: Endre her for å fikse storleik på bileta? -->
+
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:scaleType="centerCrop"
         android:id="@+id/imageView" />
+
 </LinearLayout>
