@@ -135,10 +135,19 @@ public class addNewPersonActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_name);
         String name = editText.getText().toString();
 
-        addPerson(name, bmp);
-        Toast.makeText(addNewPersonActivity.this, "" +  name + " was successfully added", Toast.LENGTH_SHORT).show();
+        if(!name.isEmpty() && bmp != null) {
+            addPerson(name, bmp);
+            Toast.makeText(addNewPersonActivity.this, "" + name + " was successfully added", Toast.LENGTH_SHORT).show();
 
-        finish();
+            finish();
+        }else {
+            if(name.isEmpty()){
+                Toast.makeText(addNewPersonActivity.this, "You have to add a name", Toast.LENGTH_LONG).show();
+            }
+            else if ( bmp == null) {
+                Toast.makeText(addNewPersonActivity.this, "" + name + ", you have to add a picture of yourself!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 
