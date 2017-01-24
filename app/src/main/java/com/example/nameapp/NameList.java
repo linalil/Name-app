@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static com.example.nameapp.PersonList.findBitmapFromName;
 import static com.example.nameapp.PersonList.findUriFromName;
 import static com.example.nameapp.PersonList.getListe;
 import static com.example.nameapp.PersonList.initialize;
@@ -83,11 +84,13 @@ public class NameList extends AppCompatActivity {
                 final String person = (String) parent.getItemAtPosition(position);
 
                 //Finn Uri til biletet, ved å bruke statisk metode frå PersonList-klassen + namnet.
-                Uri imgUri = findUriFromName(person);
+               // Uri imgUri = findUriFromName(person);
+
+                Bitmap bmp = findBitmapFromName(person);
 
                 //Lagar dialog v.h.a metode og Uri.
                 try {
-                    showImage(imgUri);
+                    showImage(bmp);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -168,10 +171,53 @@ public class NameList extends AppCompatActivity {
         }
 
 
+
+
+
         //imageView.setImageURI(imageUri);
 
         Toast.makeText(NameList.this, "" +  imageUri, Toast.LENGTH_LONG).show();
 
+
+        builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        builder.show();
+    }
+
+    //Metode som lagar pop-up vindauge med bilete gitt som Uri.
+    public void showImage(Bitmap bmp) throws IOException {
+        Dialog builder = new Dialog(this);
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        builder.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //nothing;
+            }
+        });
+
+        ImageView imageView = new ImageView(this);
+
+
+        try {
+            imageView.setImageBitmap(bmp);
+        }
+
+        catch(Exception e2){
+
+            String e = e2.getLocalizedMessage();
+            String e3 = e2.getMessage();
+            String to = e2.toString();
+
+            System.out.println("GetLocalizedMessage returnerar: " + e);
+            System.out.println("GetMessage returnerar: " + e3);
+            System.out.println("toString returnerar: " + to);
+
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+
+        }
 
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,

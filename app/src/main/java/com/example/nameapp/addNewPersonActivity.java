@@ -1,35 +1,20 @@
 package com.example.nameapp;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
+import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.regex.Pattern;
 
 import static com.example.nameapp.PersonList.addPerson;
 
@@ -40,6 +25,8 @@ public class addNewPersonActivity extends AppCompatActivity {
     private int PICK_IMAGE_REQUEST = 1;
 
     private Uri pictureUri;
+
+    private Bitmap bmp;
 
     private String selectedImagePath;
 
@@ -52,31 +39,14 @@ public class addNewPersonActivity extends AppCompatActivity {
     }
 
     public void browse_gallery(View view){
-
-        /*
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("image/*");
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-        } else {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-        }*/
-
-
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
@@ -86,6 +56,20 @@ public class addNewPersonActivity extends AppCompatActivity {
             Uri decodedUri = Uri.parse(decodedString);
 
             pictureUri = decodedUri;
+
+            try{
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                bmp = bitmap;
+            }
+
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
             //selectedImagePath = getRealPathFromURI(this, decodedUri);
             //pictureUri = Uri.parse(selectedImagePath);
@@ -108,7 +92,7 @@ public class addNewPersonActivity extends AppCompatActivity {
             this.getContentResolver().takePersistableUriPermission(decodedUri, takeFlags);
             */
 
-            Toast.makeText(addNewPersonActivity.this, "" + decodedString, Toast.LENGTH_LONG).show();
+            //Toast.makeText(addNewPersonActivity.this, "" + decodedString, Toast.LENGTH_LONG).show();
 
         }
 
@@ -148,17 +132,12 @@ public class addNewPersonActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     public void addPersonToApp(View view){
 
         EditText editText = (EditText) findViewById(R.id.edit_name);
         String name = editText.getText().toString();
 
-        addPerson(name, pictureUri);
+        addPerson(name, bmp);
         Toast.makeText(addNewPersonActivity.this, "" +  name + " was successfully added", Toast.LENGTH_SHORT).show();
 
         finish();

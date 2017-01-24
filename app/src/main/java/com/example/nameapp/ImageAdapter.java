@@ -71,13 +71,7 @@ public class ImageAdapter extends ArrayAdapter<Person> {
             InputStream input;
             Bitmap bmp;
             try {
-                input = mContext.getContentResolver().openInputStream(item.uri);
-                bmp = BitmapFactory.decodeStream(input);
-                viewHolder.itemView.setImageBitmap(bmp);
-            } catch (FileNotFoundException e1) {
-
-                Toast.makeText(mContext, "Could not find image", Toast.LENGTH_LONG).show();
-
+                viewHolder.itemView.setImageBitmap(item.bmp);
             }
             catch(Exception e2){
 
@@ -85,15 +79,7 @@ public class ImageAdapter extends ArrayAdapter<Person> {
 
             }
 
-
-
             //viewHolder.itemView.setImageURI(item.uri);
-
-
-
-
-
-
 
             return convertView;
         }

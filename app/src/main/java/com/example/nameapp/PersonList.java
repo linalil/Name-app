@@ -30,9 +30,15 @@ public class PersonList {
 
         liste = new ArrayList<Person>();
 
+        /* Versjon med URI
         Person thea = new Person("Thea", getUriToDrawable(context, R.drawable.thea_bw));
         Person marita = new Person("Marita", getUriToDrawable(context, R.drawable.marita_bw));
         Person lina = new Person("Lina", getUriToDrawable(context, R.drawable.lina_bw));
+        */
+
+        Person thea = new Person("Thea", BitmapFactory.decodeResource(context.getResources(), R.drawable.thea_bw));
+        Person marita = new Person("Marita", BitmapFactory.decodeResource(context.getResources(), R.drawable.marita_bw));
+        Person lina = new Person("Lina", BitmapFactory.decodeResource(context.getResources(), R.drawable.lina_bw));
 
         liste.add(thea);
         liste.add(marita);
@@ -50,17 +56,15 @@ public class PersonList {
 
     }
 
-
     public static ArrayList<Person> getListe(){
         return liste;
     }
-
 
     public static boolean listInitialized(){
         return listInitialized;
     }
 
-    //add person
+    //add person med Uri
     public static void addPerson(String name, Uri uri){
 
         if(!name.isEmpty() && !uri.toString().equals(null)) {
@@ -75,6 +79,22 @@ public class PersonList {
 
     }
 
+    //add person med bitmap
+    public static void addPerson(String name, Bitmap bmp){
+
+        if(!name.isEmpty()) {
+            liste.add(new Person(name, bmp));
+        }
+
+        else{
+
+            //Lag feilmelding
+
+        }
+
+    }
+
+
     public static Uri findUriFromName(String name){
 
         for(int i = 0; i < liste.size(); i++){
@@ -84,6 +104,21 @@ public class PersonList {
             if(p.name.equals(name)){
 
                 return p.uri;
+            }
+        }
+        return null;
+    }
+
+
+    public static Bitmap findBitmapFromName(String name){
+
+        for(int i = 0; i < liste.size(); i++){
+
+            Person p = liste.get(i);
+
+            if(p.name.equals(name)){
+
+                return p.bmp;
             }
         }
         return null;

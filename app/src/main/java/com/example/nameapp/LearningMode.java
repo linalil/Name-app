@@ -73,7 +73,8 @@ public class LearningMode extends AppCompatActivity {
 
         }*/
 
-        imgview.setImageURI(gameCenter.imgUri);
+        imgview.setImageBitmap(gameCenter.bmp);
+        //imgview.setImageURI(gameCenter.imgUri);
     }
 
     //Metode som oppdaterar tekstfelt med score og tal forsøk.

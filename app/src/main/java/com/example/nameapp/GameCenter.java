@@ -1,6 +1,7 @@
 package com.example.nameapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import com.example.nameapp.Person;
@@ -26,6 +27,7 @@ public class GameCenter {
     Person p;
     String correctName;
     Uri imgUri;
+    Bitmap bmp;
     final ArrayList<Person> liste;
 
     //Konstruktør
@@ -52,7 +54,8 @@ public class GameCenter {
         //Hentar eit nytt bilete, og finn namn og Uri.
         p = liste.get(randomNumber);
         correctName = p.name;
-        imgUri = p.uri;
+        //imgUri = p.uri;
+        bmp = p.bmp;
 
     }
 

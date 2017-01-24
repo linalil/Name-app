@@ -1,5 +1,6 @@
 package com.example.nameapp;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 /**
@@ -12,37 +13,29 @@ public class Person {
 
     String name;
 
-    //Integer pictureRef;
-
     Uri uri;
 
+    Bitmap bmp;
 
-    /*
-    public Person(String name, Integer pictureRef){
-        this.name = name;
-        this.pictureRef = pictureRef;
-    }*/
+
 
     public Person(String name, Uri uri){
         this.name = name;
         this.uri = uri;
     }
 
+    public Person(String name, Bitmap bmp){
+        this.name = name;
+        this.bmp = bmp;
+    }
+
     void setName(String name){
         this.name = name;
     }
 
-   /* void setPictureRef(Integer pictureRef){
-        this.pictureRef = pictureRef;
-    }*/
-
     String getName(){
         return name;
     }
-
-    /*Integer returnPictureRef(){
-        return pictureRef;
-    }*/
 
     void setUri(Uri uri){
         this.uri = uri;
@@ -51,5 +44,14 @@ public class Person {
     Uri getUri(){
         return uri;
     }
+
+    void setBmp(Bitmap bmp){
+        this.bmp = bmp;
+    }
+
+    Bitmap getBmp(){
+        return bmp;
+    }
+
 
 }
