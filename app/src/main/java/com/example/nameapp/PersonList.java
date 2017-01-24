@@ -26,8 +26,6 @@ public class PersonList {
 
     public static void initialize(Context context){
 
-
-
         liste = new ArrayList<Person>();
 
         /* Versjon med URI

@@ -52,8 +52,6 @@ public class NameList extends AppCompatActivity {
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
         listview = (ListView) findViewById(R.id.listview);
 
-
-
         if(!listInitialized()){
             initialize(this);
         }
@@ -62,7 +60,6 @@ public class NameList extends AppCompatActivity {
 
         //Lagar ein arraylist og fyller inn namna
         final ArrayList<String> list = new ArrayList<String>();
-
         for (int i = 0; i < liste.size(); ++i) {
             list.add(liste.get(i).getName());
         }
