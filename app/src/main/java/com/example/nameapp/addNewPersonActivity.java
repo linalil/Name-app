@@ -25,9 +25,7 @@ public class addNewPersonActivity extends AppCompatActivity {
     private int PICK_IMAGE_REQUEST = 1;
 
     private Uri pictureUri;
-
     private Bitmap bmp;
-
     private String selectedImagePath;
 
 

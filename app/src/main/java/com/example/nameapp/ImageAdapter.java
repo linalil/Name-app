@@ -66,10 +66,6 @@ public class ImageAdapter extends ArrayAdapter<Person> {
         Person item = getItem(position);
         if (item != null) {
             //Set inn biletet i itemView.
-
-
-            InputStream input;
-            Bitmap bmp;
             try {
                 viewHolder.itemView.setImageBitmap(item.bmp);
             }
@@ -78,7 +74,6 @@ public class ImageAdapter extends ArrayAdapter<Person> {
                 Toast.makeText(mContext, "Something went wrong", Toast.LENGTH_LONG).show();
 
             }
-
             //viewHolder.itemView.setImageURI(item.uri);
 
             return convertView;
