@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static com.example.nameapp.PersonList.addPerson;
+import static com.example.nameapp.PersonList.nameExists;
 
 public class addNewPersonActivity extends AppCompatActivity {
 
@@ -135,7 +136,7 @@ public class addNewPersonActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_name);
         String name = editText.getText().toString();
 
-        if(!name.isEmpty() && bmp != null) {
+        if(!name.isEmpty() && bmp != null && !nameExists(name)) {
             addPerson(name, bmp);
             Toast.makeText(addNewPersonActivity.this, "" + name + " was successfully added", Toast.LENGTH_SHORT).show();
 
@@ -143,6 +144,9 @@ public class addNewPersonActivity extends AppCompatActivity {
         }else {
             if(name.isEmpty()){
                 Toast.makeText(addNewPersonActivity.this, "You have to add a name", Toast.LENGTH_LONG).show();
+            }
+            else if(nameExists(name)){
+                Toast.makeText(addNewPersonActivity.this, "Name already exists, pick another", Toast.LENGTH_LONG).show();
             }
             else if ( bmp == null) {
                 Toast.makeText(addNewPersonActivity.this, "" + name + ", you have to add a picture of yourself!", Toast.LENGTH_LONG).show();

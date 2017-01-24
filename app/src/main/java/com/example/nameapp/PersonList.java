@@ -58,6 +58,21 @@ public class PersonList {
         return liste;
     }
 
+
+    public static boolean nameExists(String name){
+
+        for(int i = 0; i < liste.size(); i++){
+
+            Person p = liste.get(i);
+
+            if(p.name.equals(name)){
+
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean listInitialized(){
         return listInitialized;
     }
