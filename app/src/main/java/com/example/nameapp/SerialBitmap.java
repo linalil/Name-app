@@ -13,6 +13,8 @@ import java.io.Serializable;
 
 public class SerialBitmap implements Serializable {
 
+    private static final long serialVersionUID = 7526472295622776147L;
+
     public Bitmap bitmap;
 
     // TODO: Finish this constructor

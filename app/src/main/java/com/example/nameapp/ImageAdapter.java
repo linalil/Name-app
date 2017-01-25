@@ -67,7 +67,7 @@ public class ImageAdapter extends ArrayAdapter<Person> {
         if (item != null) {
             //Set inn biletet i itemView.
             try {
-                viewHolder.itemView.setImageBitmap(item.bmp);
+                viewHolder.itemView.setImageBitmap(item.sbmp.bitmap);
             }
             catch(Exception e2){
 

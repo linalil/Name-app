@@ -15,9 +15,9 @@ public class Person implements Serializable{
 
     String name;
 
-    Uri uri;
+//    Uri uri;
 
-    Bitmap bmp;
+//    Bitmap bmp;
 
     SerialBitmap sbmp;
 
@@ -30,7 +30,7 @@ public class Person implements Serializable{
 */
     public Person(String name, Bitmap bmp){
         this.name = name;
-        this.bmp = bmp;
+//        this.bmp = bmp;
         this.sbmp = new SerialBitmap(bmp);
     }
 
@@ -42,17 +42,23 @@ public class Person implements Serializable{
         return name;
     }
 
+/*
     void setUri(Uri uri){
         this.uri = uri;
     }
+*/
 
+/*
     Uri getUri(){
         return uri;
     }
+*/
 
+/*
     Bitmap getBmp(){
 
         return bmp;
     }
+*/
 
 }

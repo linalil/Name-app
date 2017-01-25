@@ -108,20 +108,20 @@ public class PersonList {
     }
 
 
-    public static Uri findUriFromName(String name){
+    /*public static Uri findUriFromName(String name){
 
         for(int i = 0; i < liste.size(); i++){
 
             Person p = liste.get(i);
 
-            if(p.name.equals(name) && p.bmp != null ){
+            if(p.name.equals(name) && p.sbmp.bitmap != null ){
 
                 return p.uri;
             }
         }
         return null;
     }
-
+*/
 
     public static Bitmap findBitmapFromName(String name){
 
@@ -131,7 +131,7 @@ public class PersonList {
 
             if(p.name.equals(name)){
 
-                return p.bmp;
+                return p.sbmp.bitmap;
             }
         }
         return null;

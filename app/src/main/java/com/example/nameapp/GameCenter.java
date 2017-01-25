@@ -55,7 +55,7 @@ public class GameCenter {
         p = liste.get(randomNumber);
         correctName = p.name;
         //imgUri = p.uri;
-        bmp = p.bmp;
+        bmp = p.sbmp.bitmap;
 
     }
 

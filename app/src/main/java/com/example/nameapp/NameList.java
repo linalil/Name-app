@@ -26,7 +26,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import static com.example.nameapp.PersonList.findBitmapFromName;
-import static com.example.nameapp.PersonList.findUriFromName;
 import static com.example.nameapp.PersonList.getListe;
 import static com.example.nameapp.PersonList.initialize;
 import static com.example.nameapp.PersonList.listInitialized;
