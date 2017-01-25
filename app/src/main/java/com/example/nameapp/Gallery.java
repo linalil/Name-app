@@ -22,6 +22,7 @@ public class Gallery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
+        getSupportActionBar().hide();
 
         //Sjekkar om lista med personar er initialisert, og initialiserer dersom ikkje
         if(!listInitialized()){

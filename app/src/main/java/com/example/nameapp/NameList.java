@@ -46,6 +46,7 @@ public class NameList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_list);
+        getSupportActionBar().hide();
 
         //Brukar klassen ListView for å lage ei liste med namn nedover
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById

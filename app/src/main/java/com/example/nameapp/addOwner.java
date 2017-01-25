@@ -31,6 +31,7 @@ public class addOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_owner);
+        getSupportActionBar().hide();
     }
 
     public void browse_gallery(View view){
