@@ -23,7 +23,6 @@ public class addOwner extends AppCompatActivity {
     private int PICK_IMAGE_REQUEST = 1;
     public static final String PREFS_NAME = "MyPrefsFile";
 
-
     private Uri pictureUri;
     private Bitmap bmp;
     private String selectedImagePath;
@@ -67,29 +66,23 @@ public class addOwner extends AppCompatActivity {
 
     public void addPersonToApp(View view){
 
-        EditText editText = (EditText) findViewById(R.id.edit_name);
+        EditText editText = (EditText) findViewById(R.id.edit_owner);
         String name = editText.getText().toString();
 
-        if(!name.isEmpty() && bmp != null && !nameExists(name)) {
-
-
-            //TODO: Lagre namn til personen som "owner" i SharedPreferences
+        if(!name.isEmpty() && bmp != null) {
 
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("owner", name);
             editor.commit();
 
-
             //TODO: Lagre en eller anna versjon av biletet i internt minne.
 
 
-
-            //TODO: Lag en intent som tar personen til hovudmeny når owner er lagt til.
-            //"Opne" denne om personen skal bli med i spel/oversikt osv.
-            //addPerson(name, bmp);
-
             Toast.makeText(addOwner.this, "" + name + " was successfully added as owner of app", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, MainMenu.class);
+            startActivity(intent);
 
             finish();
         }else {
@@ -104,15 +97,5 @@ public class addOwner extends AppCompatActivity {
             }
         }
     }
-
-
-    public void cancelAddPersonToApp(View view) {
-
-        finish();
-
-    }
-
-
-
 
 }

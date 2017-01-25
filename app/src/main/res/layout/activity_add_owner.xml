@@ -13,6 +13,22 @@
     tools:context="com.example.nameapp.addOwner">
 
     <!--TODO: Legg til en "topptekst" som med typ Velkommen, legg inn din brukar.."-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/welcomText"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:paddingTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:text="Hello! You have to make a profile before you can use the app. Thank you! "
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +45,7 @@
             />
 
         <EditText
-            android:id="@+id/edit_name"
+            android:id="@+id/edit_owner"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,16 +86,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <Button
-            android:text="@string/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:onClick="cancelAddPersonToApp"/>
-
-
-        <!--TODO: Fjern knappen for tilbake-->
 
         <Button
             android:layout_width="wrap_content"

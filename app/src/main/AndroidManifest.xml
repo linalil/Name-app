@@ -9,13 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenu">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainMenu"></activity>
         <activity android:name=".NameList" />
         <activity android:name=".Gallery" />
         <activity android:name=".LearningMode" />
@@ -26,7 +20,13 @@
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
         <activity android:name=".addOwner" />
-        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
