@@ -53,8 +53,8 @@ public class addNewPersonActivity extends AppCompatActivity {
             /*//Må decode Uri til vanleg format utan % og liknande.
             String decodedString = uri.decode(uri.toString());
             Uri decodedUri = Uri.parse(decodedString);
-
             pictureUri = decodedUri;*/
+
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                 bmp = bitmap;
@@ -96,40 +96,6 @@ public class addNewPersonActivity extends AppCompatActivity {
 
     }
 
-    /*public String getRealPathFromURI(Context context, Uri contentUri) {
-        Cursor cursor = null;
-        try {
-
-            String wholeID = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                wholeID = DocumentsContract.getDocumentId(contentUri);
-            }
-            String id = wholeID.split(":")[1];
-            String[] column = { MediaStore.Images.Media.DATA };
-            String sel = MediaStore.Images.Media._ID + "=?";
-
-            cursor = getContentResolver().
-                    query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            column, sel, new String[]{ id }, null);
-
-            String filePath = "";
-            int columnIndex = cursor.getColumnIndex(column[0]);
-
-            if (cursor.moveToFirst()) {
-                filePath = cursor.getString(columnIndex);
-            }
-
-            cursor.close();
-            return  filePath;
-
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-
-    }*/
-
     public void addPersonToApp(View view){
 
         EditText editText = (EditText) findViewById(R.id.edit_name);
@@ -152,6 +118,7 @@ public class addNewPersonActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
     public void cancelAddPersonToApp(View view) {
