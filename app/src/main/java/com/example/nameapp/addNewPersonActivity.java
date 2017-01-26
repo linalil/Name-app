@@ -1,23 +1,26 @@
 package com.example.nameapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import static com.example.nameapp.PersonList.addPerson;
-import static com.example.nameapp.PersonList.nameExists;
+import static android.content.ContentValues.TAG;
+import static com.example.nameapp.HelperClass.addPerson;
+import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.nameExists;
+import static com.example.nameapp.HelperClass.readObject;
+import static com.example.nameapp.HelperClass.writeObject;
 
 public class addNewPersonActivity extends AppCompatActivity {
 
@@ -105,6 +108,27 @@ public class addNewPersonActivity extends AppCompatActivity {
         if(!name.isEmpty() && bmp != null && !nameExists(name)) {
             addPerson(name, bmp);
             Toast.makeText(addNewPersonActivity.this, "" + name + " was successfully added", Toast.LENGTH_SHORT).show();
+
+            //TODO: Lagre lista i oppdatert versjon
+
+            try {
+                // Save the list of entries to internal storage
+                writeObject(this, "personliste", getListe());
+
+                // Retrieve the list from internal storage
+                ArrayList<Person> listFromStorage = (ArrayList<Person>) readObject(this, "personliste");
+
+                // Display the items from the list retrieved.
+                Log.d(TAG, "Oppdatert liste er lik: ");
+
+                for (Person entry : listFromStorage) {
+                    Log.d(TAG, entry.getName());
+                }
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+            } catch (ClassNotFoundException e) {
+                Log.e(TAG, e.getMessage());
+            }
 
             finish();
         }else {

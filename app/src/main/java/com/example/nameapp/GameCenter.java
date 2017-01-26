@@ -4,15 +4,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
-import com.example.nameapp.Person;
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-import static com.example.nameapp.PersonList.getListe;
-import static com.example.nameapp.PersonList.initialize;
-import static com.example.nameapp.PersonList.listInitialized;
+import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.initialize;
+import static com.example.nameapp.HelperClass.listInitialized;
 
 /**
  * Created by theaoen on 19.01.2017.

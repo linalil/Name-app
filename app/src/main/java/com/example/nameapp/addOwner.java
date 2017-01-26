@@ -7,25 +7,28 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import static com.example.nameapp.PersonList.addPerson;
-import static com.example.nameapp.PersonList.nameExists;
+import static android.content.ContentValues.TAG;
+import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.nameExists;
+import static com.example.nameapp.HelperClass.readObject;
+import static com.example.nameapp.HelperClass.writeObject;
 
 public class addOwner extends AppCompatActivity {
 
-    private static final int SELECT_PICTURE = 1;
     private int PICK_IMAGE_REQUEST = 1;
     public static final String PREFS_NAME = "MyPrefsFile";
 
-    private Uri pictureUri;
     private Bitmap bmp;
-    private String selectedImagePath;
+    private SerialBitmap serialBitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,17 @@ public class addOwner extends AppCompatActivity {
             editor.commit();
 
             //TODO: Lagre en eller anna versjon av biletet i internt minne.
+
+            serialBitmap = new SerialBitmap(bmp);
+
+            try {
+                // Save the list of entries to internal storage
+                writeObject(this, "ownerimage", serialBitmap);
+
+            } catch (IOException e) {
+                Log.e(TAG, "IOException adding ownerpicture");
+            }
+
 
 
             Toast.makeText(addOwner.this, "" + name + " was successfully added as owner of app", Toast.LENGTH_SHORT).show();

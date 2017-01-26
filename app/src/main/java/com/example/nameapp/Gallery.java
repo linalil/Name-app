@@ -1,6 +1,5 @@
 package com.example.nameapp;
 
-import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +10,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.example.nameapp.PersonList.getListe;
-import static com.example.nameapp.PersonList.listInitialized;
-import static com.example.nameapp.PersonList.initialize;
-import static com.example.nameapp.PersonList.listInitialized;
+import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.listInitialized;
+import static com.example.nameapp.HelperClass.initialize;
 
 public class Gallery extends AppCompatActivity {
 

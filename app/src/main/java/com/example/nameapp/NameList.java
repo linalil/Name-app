@@ -25,10 +25,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import static com.example.nameapp.PersonList.findBitmapFromName;
-import static com.example.nameapp.PersonList.getListe;
-import static com.example.nameapp.PersonList.initialize;
-import static com.example.nameapp.PersonList.listInitialized;
+import static com.example.nameapp.HelperClass.findBitmapFromName;
+import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.initialize;
+import static com.example.nameapp.HelperClass.listInitialized;
 
 
 //Klassen som listar ut namn
@@ -42,7 +42,6 @@ public class NameList extends AppCompatActivity {
     private ListView listview;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_list);
@@ -52,9 +51,10 @@ public class NameList extends AppCompatActivity {
         //Finn igjen view som ligg i fila activity_name_list ved å bruke findViewById
         listview = (ListView) findViewById(R.id.listview);
 
-        if(!listInitialized()){
+        if(!listInitialized()) {
             initialize(this);
         }
+
         liste = getListe();
 
 
@@ -80,7 +80,7 @@ public class NameList extends AppCompatActivity {
                 //Finn ut kva namn som blei trykt på.
                 final String person = (String) parent.getItemAtPosition(position);
 
-                //Finn Uri til biletet, ved å bruke statisk metode frå PersonList-klassen + namnet.
+                //Finn Uri til biletet, ved å bruke statisk metode frå HelperClass-klassen + namnet.
                // Uri imgUri = findUriFromName(person);
 
                 Bitmap bmp = findBitmapFromName(person);
@@ -105,7 +105,7 @@ public class NameList extends AppCompatActivity {
 
         if(!listInitialized()){
             initialize(this);
-        }
+       }
         liste = getListe();
 
         final ArrayList<String> list = new ArrayList<String>();
