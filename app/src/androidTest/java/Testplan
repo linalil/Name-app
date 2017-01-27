@@ -1,0 +1,12 @@
+Ting som skal testas i appen vår:
+-   Sjekke eigar
+-  Validere inputfelt for namn
+           o  Stor bokstav?
+           o  Ingen tall eller teikn?
+-  Sjekke at ingen brukar kan bruke same bilde?
+-  Validere inputfelt i learning mode
+
+
+-  Sjekke at knappefunksjonaliteten virkar
+-  Sjekke at rett namn kjem opp i forhold til rett bilde
+-  Sjekke at scoren fungerar
