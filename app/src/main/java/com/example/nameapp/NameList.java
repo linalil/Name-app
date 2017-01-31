@@ -227,7 +227,6 @@ public class NameList extends AppCompatActivity {
         Intent intent;
         intent = new Intent(this, addNewPersonActivity.class);
         startActivity(intent);
-
     }
     public void goBack(View view) {
 
