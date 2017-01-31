@@ -26,7 +26,7 @@ public class MainMenuTest {
             MainMenu.class);
 
     @Test
-    public void openNameList() throws Exception {
+    public void testOpenNameList() throws Exception {
 
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NameList.class.getName(), null, false);
         MainMenu mainMenu = (MainMenu) getActivityInstance();
@@ -46,7 +46,7 @@ public class MainMenuTest {
     }
 
     @Test
-    public void openGallery() throws Exception {
+    public void testOpenGallery() throws Exception {
 
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(Gallery.class.getName(), null, false);
         MainMenu mainMenu = (MainMenu) getActivityInstance();
@@ -67,7 +67,7 @@ public class MainMenuTest {
     }
 
     @Test
-    public void openLearningMode() throws Exception {
+    public void testOpenLearningMode() throws Exception {
 
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(LearningMode.class.getName(), null, false);
         MainMenu mainMenu = (MainMenu) getActivityInstance();

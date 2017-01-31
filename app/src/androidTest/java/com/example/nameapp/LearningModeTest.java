@@ -40,20 +40,9 @@ public class LearningModeTest{
                 .check(matches(withText(mStringToBeTyped)));
     }*/
 
-    @Test
-    public void onCreate() throws Exception {
-
-
-
-    }
 
     @Test
     public void sendAnswer() throws Exception {
-
-    }
-
-    @Test
-    public void updatePicture() throws Exception {
 
     }
 

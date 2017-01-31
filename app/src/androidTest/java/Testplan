@@ -36,20 +36,20 @@ Software:
             Browse gallery
             Add person
         Main menu:
-            Name list
-            Gallery
-            Learningmode
+            Name list X
+            Gallery X
+            Learningmode X
         Name list:
-            Add new person:
+            Add new person:  X
                 Browse gallery
-                Cancel
+                Cancel  X?
                 Add person
-            Back
+            Back X?
         Gallery:
-            Back
+            Back X?
         Learning mode
             Send
-            Back
+            Back X?
 
 Hardware:
 
