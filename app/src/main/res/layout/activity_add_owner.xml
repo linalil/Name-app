@@ -12,7 +12,6 @@
 
     tools:context="com.example.nameapp.addOwner">
 
-    <!--TODO: Legg til en "topptekst" som med typ Velkommen, legg inn din brukar.."-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
