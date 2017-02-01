@@ -107,7 +107,7 @@ public class addNewPersonActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_name);
         String name = editText.getText().toString();
 
-        if(!name.isEmpty() && bmp != null && !nameExists(name) && !containsNumber(name) && isValidString(name)) {
+        if(!name.isEmpty() && bmp != null && !nameExists(name) && isValidString(name)) {
             addPerson(name, bmp);
             Toast.makeText(addNewPersonActivity.this, "" + name + " was successfully added", Toast.LENGTH_SHORT).show();
 

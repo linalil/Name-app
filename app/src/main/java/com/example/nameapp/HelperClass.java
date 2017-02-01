@@ -203,7 +203,7 @@ public class HelperClass {
 
 
     public static boolean isValidString(String name){
-        return name.matches("[-a-zA-ZæøåÆØÅ]+");
+        return name.matches("[-a-zA-ZæøåÆØÅ^0-9 ]+");
 
     }
 
