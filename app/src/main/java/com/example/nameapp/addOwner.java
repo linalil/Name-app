@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
+import static com.example.nameapp.HelperClass.containsNumber;
 import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.isValidString;
 import static com.example.nameapp.HelperClass.nameExists;
 import static com.example.nameapp.HelperClass.readObject;
 import static com.example.nameapp.HelperClass.writeObject;
@@ -73,7 +75,7 @@ public class addOwner extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_owner);
         String name = editText.getText().toString();
 
-        if(!name.isEmpty() && bmp != null) {
+        if(!name.isEmpty() && bmp != null && !containsNumber(name) && isValidString(name)) {
 
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             SharedPreferences.Editor editor = settings.edit();
@@ -92,8 +94,6 @@ public class addOwner extends AppCompatActivity {
                 Log.e(TAG, "IOException adding ownerpicture");
             }
 
-
-
             Toast.makeText(addOwner.this, "" + name + " was successfully added as owner of app", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, MainMenu.class);
@@ -104,8 +104,11 @@ public class addOwner extends AppCompatActivity {
             if(name.isEmpty()){
                 Toast.makeText(addOwner.this, "You have to add a name", Toast.LENGTH_LONG).show();
             }
-            else if(nameExists(name)){
-                Toast.makeText(addOwner.this, "Name already exists, pick another", Toast.LENGTH_LONG).show();
+            else if(containsNumber(name)){
+                Toast.makeText(addOwner.this, "Name cannot contain number", Toast.LENGTH_LONG).show();
+            }
+            else if(!isValidString(name)){
+                Toast.makeText(addOwner.this, "Illegal character!", Toast.LENGTH_LONG).show();
             }
             else if ( bmp == null) {
                 Toast.makeText(addOwner.this, "" + name + ", you have to add a picture of yourself!", Toast.LENGTH_LONG).show();

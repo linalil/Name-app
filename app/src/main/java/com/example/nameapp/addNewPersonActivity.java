@@ -17,7 +17,9 @@ import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 import static com.example.nameapp.HelperClass.addPerson;
+import static com.example.nameapp.HelperClass.containsNumber;
 import static com.example.nameapp.HelperClass.getListe;
+import static com.example.nameapp.HelperClass.isValidString;
 import static com.example.nameapp.HelperClass.nameExists;
 import static com.example.nameapp.HelperClass.readObject;
 import static com.example.nameapp.HelperClass.writeObject;
@@ -105,11 +107,9 @@ public class addNewPersonActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_name);
         String name = editText.getText().toString();
 
-        if(!name.isEmpty() && bmp != null && !nameExists(name)) {
+        if(!name.isEmpty() && bmp != null && !nameExists(name) && !containsNumber(name) && isValidString(name)) {
             addPerson(name, bmp);
             Toast.makeText(addNewPersonActivity.this, "" + name + " was successfully added", Toast.LENGTH_SHORT).show();
-
-            //TODO: Lagre lista i oppdatert versjon
 
             try {
                 // Save the list of entries to internal storage
@@ -137,6 +137,12 @@ public class addNewPersonActivity extends AppCompatActivity {
             }
             else if(nameExists(name)){
                 Toast.makeText(addNewPersonActivity.this, "Name already exists, pick another", Toast.LENGTH_LONG).show();
+            }
+            else if(containsNumber(name)){
+                Toast.makeText(addNewPersonActivity.this, "Name cannot contain number", Toast.LENGTH_LONG).show();
+            }
+            else if(!isValidString(name)){
+                Toast.makeText(addNewPersonActivity.this, "Illegal character!", Toast.LENGTH_LONG).show();
             }
             else if ( bmp == null) {
                 Toast.makeText(addNewPersonActivity.this, "" + name + ", you have to add a picture of yourself!", Toast.LENGTH_LONG).show();

@@ -192,4 +192,21 @@ public class HelperClass {
         return p;
     }
 
+
+    public static boolean containsNumber(String name){
+        if(name.matches(".*\\d.*")){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+
+    public static boolean isValidString(String name){
+        return name.matches("[-a-zA-ZæøåÆØÅ]+");
+
+    }
+
+
+
 }

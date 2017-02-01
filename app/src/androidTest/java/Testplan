@@ -1,9 +1,7 @@
 Ting som skal testas i appen vår:
 -   Sjekke eigar
 -  Validere inputfelt for namn
-           o  Stor bokstav?
            o  Ingen tall eller teikn?
--  Sjekke at ingen brukar kan bruke same bilde?
 -  Validere inputfelt i learning mode
 
 
@@ -24,6 +22,7 @@ Software:
         2.3 Gingerbread
         3.0 Honeycomb
         4.0 Ice Cream Sandwich
+
         Må testes:
         4.1 Jellybean
         4.4 Kitkat
