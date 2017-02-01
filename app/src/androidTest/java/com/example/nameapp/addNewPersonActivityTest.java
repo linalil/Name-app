@@ -45,39 +45,38 @@ public class addNewPersonActivityTest {
         onView(withId(R.id.edit_name)).perform(typeText("Per")).check(matches(withText("Per")));
     }
 
-
+    /*
+    * Sjekker om aktiviteten slutter når man trykker på legg "Add person"-knappen
+    * */
     @Test
-    public void addPersonToApp() throws Exception {
-        /*Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NameList.class.getName(), null, false);
-        addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
+    public void addPersonToAppFinishing() throws Exception {
+        final addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
         final Button button = (Button) addNewPerson.findViewById(R.id.goToNameList);
 
         addNewPerson.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 button.performClick();
+                assertTrue(addNewPerson.isFinishing());
             }
         });
-
-        NameList nextActivity = (NameList) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 50000);
-        assertNotNull(nextActivity);
-        nextActivity .finish();*/
     }
 
+    /*
+    * Sjekker om aktiviteten slutter når man trykker på legg "Cancel"-knappen
+    * */
     @Test
-    public void cancelAddPersonToApp() throws Exception {
-        /*//Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NameList.class.getName(), null, false);
-        addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
+    public void cancelAddPersonToAppFinishing() throws Exception {
+        final addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
         final Button button = (Button) addNewPerson.findViewById(R.id.cancelAddPerson);
 
         addNewPerson.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 button.performClick();
+                assertTrue(addNewPerson.isFinishing());
             }
         });
-
-        assertTrue(addNewPerson.isFinishing());*/
     }
 
     /*
