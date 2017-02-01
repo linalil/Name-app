@@ -14,6 +14,18 @@ import org.junit.Test;
 import java.util.Collection;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasToString;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.*;
 
 /**
@@ -51,6 +63,17 @@ public class NameListTest {
     }
 
 
+    @Test
+    public void personsInList() throws Exception {
+        onData(hasToString(containsString("Lina")));
+        onData(hasToString(containsString("Thea")));
+        onData(hasToString(containsString("Marita")));
+    }
+
+    @Test
+    public void personsNotInList() throws Exception {
+        onData(not(hasToString(containsString("Kari"))));
+    }
 
     /*
     * Metode som hentar noverande aktivitet.
