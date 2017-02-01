@@ -7,6 +7,8 @@ import android.support.test.runner.lifecycle.Stage;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -43,16 +45,57 @@ public class LearningModeTest{
         final LearningMode learningMode = (LearningMode) getActivityInstance();
         final Button button = (Button) learningMode.findViewById(R.id.checkAnswer);
 
+        String correct = learningMode.gameCenter.correctName;
+
+
+        Integer scoreBefore = learningMode.gameCenter.attempts;
+        Integer attemptsBefore = learningMode.gameCenter.attempts;
+
+        onView(withId(R.id.edit_message)).perform(typeText(correct));
+
         learningMode.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
-                String correct = learningMode.gameCenter.correctName;
-                onView(withId(R.id.edit_message)).perform(typeText(correct));
                 button.performClick();
             }
         });
 
+        learningMode.gameCenter.checkAnswer(correct);
+
+        Integer scoreAfter = learningMode.gameCenter.score;
+        Integer attemptsAfter = learningMode.gameCenter.attempts;
+
+        assertTrue(scoreAfter == (scoreBefore + 1));
+        assertTrue(attemptsAfter == (attemptsBefore + 1));
+    }
+
+    @Test
+    public void checkScoreWrongAnswer() throws Exception {
+
+        final LearningMode learningMode = (LearningMode) getActivityInstance();
+        final Button button = (Button) learningMode.findViewById(R.id.checkAnswer);
+
+        String wrong = "Feil";
+
+        Integer scoreBefore = learningMode.gameCenter.attempts;
+        Integer attemptsBefore = learningMode.gameCenter.attempts;
+
+        onView(withId(R.id.edit_message)).perform(typeText(wrong));
+
+        learningMode.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                button.performClick();
+            }
+        });
+
+        learningMode.gameCenter.checkAnswer(wrong);
+
+        Integer scoreAfter = learningMode.gameCenter.score;
+        Integer attemptsAfter = learningMode.gameCenter.attempts;
+
+        assertTrue(scoreAfter == scoreBefore);
+        assertTrue(attemptsAfter == (attemptsBefore + 1));
     }
 
     public Activity getActivityInstance(){
