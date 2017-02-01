@@ -73,14 +73,15 @@
         android:text="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/cancelAddPerson"
         android:onClick="cancelAddPersonToApp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_Person_to_App"
-        android:onClick="addPersonToApp" />
+        android:onClick="addPersonToApp"
+        android:id="@+id/goToNameList"/>
 
     </LinearLayout>
 
