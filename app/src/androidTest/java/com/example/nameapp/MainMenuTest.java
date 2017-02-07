@@ -14,6 +14,9 @@ import org.junit.Test;
 import java.util.Collection;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
 /**
@@ -32,12 +35,7 @@ public class MainMenuTest {
         MainMenu mainMenu = (MainMenu) getActivityInstance();
         final Button button = (Button) mainMenu.findViewById(R.id.goToNameList);
 
-        mainMenu.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
+        onView(withId(R.id.goToNameList)).perform(click());
 
         NameList nextActivity = (NameList) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         assertNotNull(nextActivity);
@@ -52,17 +50,11 @@ public class MainMenuTest {
         MainMenu mainMenu = (MainMenu) getActivityInstance();
         final Button button = (Button) mainMenu.findViewById(R.id.goToGallery);
 
-        mainMenu.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
+        onView(withId(R.id.goToGallery)).perform(click());
 
         Gallery nextActivity = (Gallery) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         assertNotNull(nextActivity);
         nextActivity .finish();
-
 
     }
 
@@ -73,12 +65,7 @@ public class MainMenuTest {
         MainMenu mainMenu = (MainMenu) getActivityInstance();
         final Button button = (Button) mainMenu.findViewById(R.id.goToLearningMode);
 
-        mainMenu.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
+        onView(withId(R.id.goToLearningMode)).perform(click());
 
         LearningMode nextActivity = (LearningMode) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         assertNotNull(nextActivity);

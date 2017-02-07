@@ -47,20 +47,12 @@ public class LearningModeTest{
 
         String correct = learningMode.gameCenter.correctName;
 
-
         Integer scoreBefore = learningMode.gameCenter.attempts;
         Integer attemptsBefore = learningMode.gameCenter.attempts;
 
         onView(withId(R.id.edit_message)).perform(typeText(correct));
 
-        learningMode.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
-
-        learningMode.gameCenter.checkAnswer(correct);
+        onView(withId(R.id.checkAnswer)).perform(click());
 
         Integer scoreAfter = learningMode.gameCenter.score;
         Integer attemptsAfter = learningMode.gameCenter.attempts;
@@ -82,14 +74,7 @@ public class LearningModeTest{
 
         onView(withId(R.id.edit_message)).perform(typeText(wrong));
 
-        learningMode.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
-
-        learningMode.gameCenter.checkAnswer(wrong);
+        onView(withId(R.id.checkAnswer)).perform(click());
 
         Integer scoreAfter = learningMode.gameCenter.score;
         Integer attemptsAfter = learningMode.gameCenter.attempts;

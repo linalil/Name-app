@@ -48,34 +48,12 @@ public class LearningMode extends AppCompatActivity {
         //Oppdaterar view for bilete og tekst.
         updatePicture();
         updateScore();
-
     }
 
     //Metode som legg inn bilete i imageView
     public void updatePicture(){
-
         final ImageView imgview = (ImageView) findViewById(R.id.imageView);
-
-        /*
-        InputStream input;
-        Bitmap bmp;
-        try {
-            input = this.getContentResolver().openInputStream(gameCenter.imgUri);
-            bmp = BitmapFactory.decodeStream(input);
-            imgview.setImageBitmap(bmp);
-        } catch (FileNotFoundException e1) {
-
-            Toast.makeText(this, "Could not find image", Toast.LENGTH_LONG).show();
-
-        }
-        catch(Exception e2){
-
-            Toast.makeText(this, "Picture not viewable", Toast.LENGTH_LONG).show();
-
-        }*/
-
         imgview.setImageBitmap(gameCenter.bmp);
-        //imgview.setImageURI(gameCenter.imgUri);
     }
 
     //Metode som oppdaterar tekstfelt med score og tal forsøk.

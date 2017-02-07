@@ -20,6 +20,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasToString;
@@ -50,12 +51,7 @@ public class NameListTest {
         NameList mainMenu = (NameList) getActivityInstance();
         final Button button = (Button) mainMenu.findViewById(R.id.addNewPersonBtn);
 
-        mainMenu.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-            }
-        });
+        onView(withId(R.id.addNewPersonBtn)).perform(click());
 
         addNewPersonActivity nextActivity = (addNewPersonActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         assertNotNull(nextActivity);
