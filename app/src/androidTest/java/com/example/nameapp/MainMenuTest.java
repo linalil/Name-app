@@ -16,6 +16,8 @@ import java.util.Collection;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
@@ -60,18 +62,8 @@ public class MainMenuTest {
 
     @Test
     public void testOpenLearningMode() throws Exception {
-
-        Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(LearningMode.class.getName(), null, false);
-        MainMenu mainMenu = (MainMenu) getActivityInstance();
-        final Button button = (Button) mainMenu.findViewById(R.id.goToLearningMode);
-
         onView(withId(R.id.goToLearningMode)).perform(click());
-
-        LearningMode nextActivity = (LearningMode) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
-        assertNotNull(nextActivity);
-        nextActivity .finish();
-
-
+        onView(withId(R.id.score)).check(matches(isDisplayed()));
     }
 
 
