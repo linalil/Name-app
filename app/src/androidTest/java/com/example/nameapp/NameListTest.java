@@ -41,6 +41,8 @@ public class NameListTest {
 
     @Test
     public void goBack() throws Exception {
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.imageView2)).check(matches(isDisplayed()));
 
     }
 

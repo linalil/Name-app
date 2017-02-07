@@ -230,7 +230,9 @@ public class NameList extends AppCompatActivity {
     }
     public void goBack(View view) {
 
-        finish();
+        Intent intent;
+        intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.nameapp;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,7 +63,9 @@ public class Gallery extends AppCompatActivity {
     }
     public void goBack(View view) {
 
-        finish();
+        Intent intent;
+        intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
 
     }
 }

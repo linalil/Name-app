@@ -130,7 +130,9 @@ public class addNewPersonActivity extends AppCompatActivity {
                 Log.e(TAG, e.getMessage());
             }
 
-            finish();
+            Intent intent;
+            intent = new Intent(this, NameList.class);
+            startActivity(intent);
         }else {
             if(name.isEmpty()){
                 Toast.makeText(addNewPersonActivity.this, "You have to add a name", Toast.LENGTH_LONG).show();
@@ -154,7 +156,9 @@ public class addNewPersonActivity extends AppCompatActivity {
 
     public void cancelAddPersonToApp(View view) {
 
-        finish();
+        Intent intent;
+        intent = new Intent(this, NameList.class);
+        startActivity(intent);
 
     }
 

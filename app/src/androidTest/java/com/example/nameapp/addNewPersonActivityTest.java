@@ -15,11 +15,17 @@ import java.util.Collection;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
+
+
+
 
 /**
  * Created by linalil on 31.01.2017.
@@ -46,20 +52,13 @@ public class addNewPersonActivityTest {
     }
 
     /*
-    * Sjekker om aktiviteten slutter når man trykker på legg "Add person"-knappen
+    * Sjekker at man ikke får gå videre uten bilde og/eller navn, når man trykker på legg "Add person"-knappen
     * */
     @Test
     public void addPersonToAppFinishing() throws Exception {
-        final addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
-        final Button button = (Button) addNewPerson.findViewById(R.id.goToNameList);
 
-        addNewPerson.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-                assertTrue(addNewPerson.isFinishing());
-            }
-        });
+        onView(withId(R.id.goToNameList)).perform(click());
+        onView(withId(R.id.listview)).check(doesNotExist());
     }
 
     /*
@@ -67,37 +66,9 @@ public class addNewPersonActivityTest {
     * */
     @Test
     public void cancelAddPersonToAppFinishing() throws Exception {
-        final addNewPersonActivity addNewPerson = (addNewPersonActivity) getActivityInstance();
-        final Button button = (Button) addNewPerson.findViewById(R.id.cancelAddPerson);
 
-        addNewPerson.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                button.performClick();
-                assertTrue(addNewPerson.isFinishing());
-            }
-        });
-    }
-
-    /*
-    * Metode som hentar noverande aktivitet.
-    * */
-    public Activity getActivityInstance(){
-
-        final Activity[] currentActivity = new Activity[1];
-
-        getInstrumentation().runOnMainSync(new Runnable() {
-            public void run() {
-                Collection<Activity> resumedActivities = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED);
-                for (Activity act: resumedActivities){
-                    Log.d("Your current activity: ", act.getClass().getName());
-                    currentActivity[0] = act;
-                    break;
-                }
-            }
-        });
-
-        return currentActivity[0];
+        onView(withId(R.id.cancelAddPerson)).perform(click());
+        onView(withId(R.id.addNewPersonBtn)).check(matches(isDisplayed()));
     }
 
 }

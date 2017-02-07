@@ -73,7 +73,9 @@ public class LearningMode extends AppCompatActivity {
 
         Toast.makeText(LearningMode.this, "Scored " + gameCenter.score + " of " + gameCenter.attempts , Toast.LENGTH_SHORT).show();
 
-        finish();
+        Intent intent;
+        intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
 
     }
 }

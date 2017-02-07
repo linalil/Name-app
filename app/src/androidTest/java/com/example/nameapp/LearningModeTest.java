@@ -22,6 +22,7 @@ import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.action.ViewActions.typeTextIntoFocusedView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withTagKey;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -99,6 +100,13 @@ public class LearningModeTest{
         });
 
         return currentActivity[0];
+    }
+
+    @Test
+    public void goBack() throws Exception {
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.imageView2)).check(matches(isDisplayed()));
+
     }
 
 
