@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import android.support.test.runner.lifecycle.Stage;
-import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,20 +15,16 @@ import java.util.Collection;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.action.ViewActions.typeTextIntoFocusedView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withTagKey;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by linalil on 31.01.2017.
  */
-public class LearningModeTest{
+public class LearningModeTest {
 
 
     private static final String mStringToBeTyped = "Espresso";
@@ -40,6 +33,7 @@ public class LearningModeTest{
     public ActivityTestRule<LearningMode> mActivityRule = new ActivityTestRule<>(
             LearningMode.class);
 
+    /*Sjekkar at score blir riktig berekna ved riktig svar.*/
     @Test
     public void checkScoreCorrectAnswer() throws Exception {
 
@@ -62,6 +56,7 @@ public class LearningModeTest{
         assertTrue(attemptsAfter == (attemptsBefore + 1));
     }
 
+    /* Sjekkar at score blir riktig berekna ved feil svar. */
     @Test
     public void checkScoreWrongAnswer() throws Exception {
 
@@ -84,14 +79,15 @@ public class LearningModeTest{
         assertTrue(attemptsAfter == (attemptsBefore + 1));
     }
 
-    public Activity getActivityInstance(){
+    //Hentar det som er den noverande aktiviteten.
+    public Activity getActivityInstance() {
 
         final Activity[] currentActivity = new Activity[1];
 
         getInstrumentation().runOnMainSync(new Runnable() {
             public void run() {
                 Collection<Activity> resumedActivities = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED);
-                for (Activity act: resumedActivities){
+                for (Activity act : resumedActivities) {
                     Log.d("Your current activity: ", act.getClass().getName());
                     currentActivity[0] = act;
                     break;
@@ -102,6 +98,7 @@ public class LearningModeTest{
         return currentActivity[0];
     }
 
+    /* Testar at ein går tilbake på riktig måte. */
     @Test
     public void goBack() throws Exception {
         onView(withId(R.id.button2)).perform(click());

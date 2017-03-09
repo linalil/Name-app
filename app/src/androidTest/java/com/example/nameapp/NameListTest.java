@@ -18,16 +18,12 @@ import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasToString;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNot.not;
-import static org.hamcrest.core.StringStartsWith.startsWith;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by linalil on 31.01.2017.
@@ -57,10 +53,13 @@ public class NameListTest {
 
         addNewPersonActivity nextActivity = (addNewPersonActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         assertNotNull(nextActivity);
-        nextActivity .finish();
+        nextActivity.finish();
     }
 
 
+    /*
+    * Sjekkar at personar fins i lista.
+    * */
     @Test
     public void personsInList() throws Exception {
         onData(hasToString(containsString("Lina")));
@@ -76,14 +75,14 @@ public class NameListTest {
     /*
     * Metode som hentar noverande aktivitet.
     * */
-    public Activity getActivityInstance(){
+    public Activity getActivityInstance() {
 
         final Activity[] currentActivity = new Activity[1];
 
         getInstrumentation().runOnMainSync(new Runnable() {
             public void run() {
                 Collection<Activity> resumedActivities = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED);
-                for (Activity act: resumedActivities){
+                for (Activity act : resumedActivities) {
                     Log.d("Your current activity: ", act.getClass().getName());
                     currentActivity[0] = act;
                     break;

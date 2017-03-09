@@ -1,12 +1,10 @@
 package com.example.nameapp;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Window;
 import android.view.WindowManager;
 
 public class SplashScreen extends AppCompatActivity {
@@ -27,18 +25,16 @@ public class SplashScreen extends AppCompatActivity {
 
 
         new Handler().postDelayed(new Runnable() {
-
             @Override
             public void run() {
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
-                if(settings.contains("owner")){
+                if (settings.contains("owner")) {
                     Intent intent = new Intent(SplashScreen.this, MainMenu.class);
                     startActivity(intent);
 
                     finish();
-                }
-                else{
+                } else {
                     Intent intent = new Intent(SplashScreen.this, addOwner.class);
                     startActivity(intent);
 
@@ -48,16 +44,7 @@ public class SplashScreen extends AppCompatActivity {
         }, SPLASH_TIME_OUT);
 
 
-        //TODO: Sjekk om det er første gang appen opnast, lag i så fall owner.
-
-
-
-
-
-
     }
-
-
 
 
 }

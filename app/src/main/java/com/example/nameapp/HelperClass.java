@@ -1,30 +1,16 @@
 package com.example.nameapp;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URI;
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
@@ -42,8 +28,10 @@ public class HelperClass {
 
     public static void initialize(Context context){
 
+        //Initialiserar ei tom liste med personar.
         liste = new ArrayList<Person>();
 
+        //Legg til dei tre gruppemedlemma som objekt i denne.
         Person thea = new Person("Thea", BitmapFactory.decodeResource(context.getResources(), R.drawable.thea_bw));
         Person marita = new Person("Marita", BitmapFactory.decodeResource(context.getResources(), R.drawable.marita_bw));
         Person lina = new Person("Lina", BitmapFactory.decodeResource(context.getResources(), R.drawable.lina_bw));
@@ -52,12 +40,12 @@ public class HelperClass {
         liste.add(marita);
         liste.add(lina);
 
+        //Hentar inn eigaren frå minnet via getOwnerFromMemory-metoden i klassen.
         Person owner = getOwnerFromMemory(context);
         if(owner != null){
             liste.add(owner);
         }
         else{
-
             Log.d(TAG, "Det gjekk ikkje å hente eigaren");
         }
 
@@ -78,14 +66,15 @@ public class HelperClass {
             Log.e(TAG, e.getMessage());
         }
 
+
+        //Dersom det fins fleire personar i internminne, legg desse til i lista.
         if(listFromInternalMemory != null){
 
             for(int i = 0; i < listFromInternalMemory.size(); i++){
-
                 Person p = listFromInternalMemory.get(i);
 
+                //Namnet kan ikkje fins frå før.
                 if(!nameExists(p.name)){
-
                     liste.add(p);
                     Log.d(TAG, "Lagt til ein ny person " + p.name);
                 }
@@ -94,16 +83,16 @@ public class HelperClass {
         listInitialized = true;
     }
 
+    //Metode som returnerar personlista.
     public static ArrayList<Person> getListe(){
         return liste;
     }
 
+    //Metode som sjekkar at namnet ikkje fins i lista frå før.
     public static boolean nameExists(String name){
 
         for(int i = 0; i < liste.size(); i++){
-
             Person p = liste.get(i);
-
             if(p.name.equals(name)){
 
                 return true;
@@ -112,6 +101,7 @@ public class HelperClass {
         return false;
     }
 
+    //Returnerar boolsk variabel som fortel om lista er initialisert.
     public static boolean listInitialized(){
         return listInitialized;
     }
@@ -125,12 +115,13 @@ public class HelperClass {
 
         else{
 
-            //Lag feilmelding
+            //Lag feilmelding...
 
         }
 
     }
 
+    //metode som hentar finn biletet til ein person basert på namn.
     public static Bitmap findBitmapFromName(String name){
 
         for(int i = 0; i < liste.size(); i++){
@@ -145,6 +136,7 @@ public class HelperClass {
         return null;
     }
 
+    //Metode som skriv objekt til fil.
     public static void writeObject(Context context, String key, Object object) throws IOException {
         FileOutputStream fos = context.openFileOutput(key, Context.MODE_PRIVATE);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -153,6 +145,7 @@ public class HelperClass {
         fos.close();
     }
 
+    //Metode som returnerar objekt frå fil.
     public static Object readObject(Context context, String key) throws IOException,
             ClassNotFoundException {
         FileInputStream fis = context.openFileInput(key);
@@ -162,10 +155,11 @@ public class HelperClass {
     }
 
 
+    //Metode som returnerar eit Person-objekt med eigar sine data
     public static Person getOwnerFromMemory(Context context){
-
         Person p = null;
 
+        //Hentar inn SharedPreferences lagra under SplashScreen.
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
 
         //Hentar biletet til eigaren frå minnet.
@@ -180,11 +174,13 @@ public class HelperClass {
             Log.e(TAG, e.getMessage());
         }
 
+        //Dersom biletet fins og eigar sitt namn er i minnet..
         if(serialBitmap != null && settings.contains("owner")){
 
             Bitmap bmp = serialBitmap.bitmap;
             String name = settings.getString("owner", "");
 
+            //..opprett personobjekt med gitte data.
             p = new Person(name, bmp);
 
         }
@@ -193,6 +189,7 @@ public class HelperClass {
     }
 
 
+    //Metode som validerar om String inneheld tal.
     public static boolean containsNumber(String name){
         if(name.matches(".*\\d.*")){
             return true;
@@ -201,7 +198,7 @@ public class HelperClass {
         }
     }
 
-
+    //Metode som validerar om String er gyldig.
     public static boolean isValidString(String name){
         return name.matches("[-a-zA-ZæøåÆØÅ^0-9 ]+");
 

@@ -11,6 +11,7 @@ import java.io.Serializable;
  * Created by theaoen on 24.01.2017.
  */
 
+//Klasse som handterar serialisering av bitmap.
 public class SerialBitmap implements Serializable {
 
     private static final long serialVersionUID = 7526472295622776147L;

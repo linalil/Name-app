@@ -1,9 +1,9 @@
 package com.example.nameapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import static com.example.nameapp.HelperClass.getListe;
-import static com.example.nameapp.HelperClass.listInitialized;
 import static com.example.nameapp.HelperClass.initialize;
+import static com.example.nameapp.HelperClass.listInitialized;
 
 public class Gallery extends AppCompatActivity {
 
@@ -56,11 +56,9 @@ public class Gallery extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
+
+    //Metode som går tilbake ved Back-knapp.
     public void goBack(View view) {
 
         Intent intent;

@@ -2,7 +2,6 @@ package com.example.nameapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,6 +12,7 @@ import static com.example.nameapp.HelperClass.listInitialized;
 
 /**
  * Created by theaoen on 19.01.2017.
+ * Klasse som styrer logikken bak LearningMode.
  */
 
 public class GameCenter {
@@ -23,7 +23,6 @@ public class GameCenter {
     Integer randomNumber;
     Person p;
     String correctName;
-    Uri imgUri;
     Bitmap bmp;
     final ArrayList<Person> liste;
 
@@ -47,11 +46,9 @@ public class GameCenter {
         Random rand = new Random(System.currentTimeMillis());
         randomNumber = rand.nextInt(liste.size());
 
-
-        //Hentar eit nytt bilete, og finn namn og Uri.
+        //Plukkar ein tilfeldig person, og setter namn + bilete for denne.
         p = liste.get(randomNumber);
         correctName = p.name;
-        //imgUri = p.uri;
         bmp = p.sbmp.bitmap;
 
     }

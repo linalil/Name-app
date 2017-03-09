@@ -10,7 +10,7 @@ import java.util.List;
  * Created by theaoen on 17.01.2017.
  */
 
-public class StableArrayAdapter extends ArrayAdapter<String>{
+public class StableArrayAdapter extends ArrayAdapter<String> {
 
 
     HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();

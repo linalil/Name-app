@@ -1,22 +1,13 @@
 package com.example.nameapp;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class LearningMode extends AppCompatActivity {
 
@@ -28,6 +19,8 @@ public class LearningMode extends AppCompatActivity {
         setContentView(R.layout.activity_learning_mode);
         getSupportActionBar().hide();
 
+
+        //Initialiserar gameCenter-objektet for spel-logikk.
         gameCenter = new GameCenter(this);
         gameCenter.nextPicture();
         updatePicture();
@@ -35,6 +28,7 @@ public class LearningMode extends AppCompatActivity {
 
     }
 
+    //Metode som køyrast når brukar klikkar på svar-knappen.
     public void sendAnswer(View view) {
         //Hentar inn svaret frå brukaren og nullar ut tekstfeltet
         EditText editText = (EditText) findViewById(R.id.edit_message);
@@ -69,6 +63,8 @@ public class LearningMode extends AppCompatActivity {
         attempts.setText(numAttempts);
 
     }
+
+    //Metode som køyrer når brukar går tilbake og ut av aktiviteten.
     public void goBack(View view) {
 
         Toast.makeText(LearningMode.this, "Scored " + gameCenter.score + " of " + gameCenter.attempts , Toast.LENGTH_SHORT).show();
